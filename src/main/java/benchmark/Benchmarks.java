@@ -18,9 +18,9 @@ import org.openjdk.jmh.annotations.Warmup;
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
 // Hotspot seems to do all its optimizations pretty quickly, so let's save some time.
-@Fork(value = 1, warmups = 0)
-@Measurement(iterations=5)
-@Warmup(iterations = 5)
+//@Fork(value = 1, warmups = 0)
+//@Measurement(iterations=5)
+//@Warmup(iterations = 5)
 public class Benchmarks {
   @Param({"false", "true"})
   public boolean useInvokeDynamic;

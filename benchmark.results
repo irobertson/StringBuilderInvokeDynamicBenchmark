@@ -1,0 +1,27 @@
+# VM invoker: /usr/local/pkgs/jdk1.8.0_20/jre/bin/java
+# VM options: <none>
+# Warmup: 20 iterations, 1 s each
+# Measurement: 20 iterations, 1 s each
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: benchmark.Benchmarks.benchmarkMarshal
+
+# Run complete. Total time: 02:08:58
+
+Benchmark                        (constStringAppendCount)      (provider)  (useInvokeDynamic)  Mode  Samples    Score  Score error  Units
+b.Benchmarks.benchmarkMarshal                           0      NEVER_NULL               false  avgt      200   10.119        0.181  ns/op
+b.Benchmarks.benchmarkMarshal                           0      NEVER_NULL                true  avgt      200   18.436        0.184  ns/op
+b.Benchmarks.benchmarkMarshal                           0  SOMETIMES_NULL               false  avgt      200   15.350        0.157  ns/op
+b.Benchmarks.benchmarkMarshal                           0  SOMETIMES_NULL                true  avgt      200   15.003        0.053  ns/op
+b.Benchmarks.benchmarkMarshal                           1      NEVER_NULL               false  avgt      200   10.357        0.053  ns/op
+b.Benchmarks.benchmarkMarshal                           1      NEVER_NULL                true  avgt      200   22.462        0.132  ns/op
+b.Benchmarks.benchmarkMarshal                           1  SOMETIMES_NULL               false  avgt      200   15.344        0.062  ns/op
+b.Benchmarks.benchmarkMarshal                           1  SOMETIMES_NULL                true  avgt      200   15.347        0.051  ns/op
+b.Benchmarks.benchmarkMarshal                          10      NEVER_NULL               false  avgt      200   11.947        0.066  ns/op
+b.Benchmarks.benchmarkMarshal                          10      NEVER_NULL                true  avgt      200   52.562        0.224  ns/op
+b.Benchmarks.benchmarkMarshal                          10  SOMETIMES_NULL               false  avgt      200   16.396        0.127  ns/op
+b.Benchmarks.benchmarkMarshal                          10  SOMETIMES_NULL                true  avgt      200   16.280        0.066  ns/op
+b.Benchmarks.benchmarkMarshal                         100      NEVER_NULL               false  avgt      200   42.512        0.163  ns/op
+b.Benchmarks.benchmarkMarshal                         100      NEVER_NULL                true  avgt      200  737.799        9.967  ns/op
+b.Benchmarks.benchmarkMarshal                         100  SOMETIMES_NULL               false  avgt      200   47.734        0.183  ns/op
+b.Benchmarks.benchmarkMarshal                         100  SOMETIMES_NULL                true  avgt      200   47.564        0.192  ns/op
