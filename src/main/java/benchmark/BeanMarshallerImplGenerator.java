@@ -10,15 +10,27 @@ import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.Handle;
 import org.objectweb.asm.MethodVisitor;
 
-public class BeanJsonifierImplGenerator {
+/**
+ * Bytecode generator for a class with marshal method taking a {@link Bean} instance which:
+ * <ol>
+ *   <li>Creates an emtpy StringBuilder,</li>
+ *   <li>appends the string "x" to the builder {@code constStringAppendCount} times in a row,</li>
+ *   <li>retrieves the String field {@code s} from the {@code Bean} instance, using either a simple
+ *       GETFIELD op, or invokeDynamic,</li>
+ *   <li>appends the retrieved String to the StringBuilder</li>
+ *   <li>invokes {@link StringBuilder#toString()}, and</li>
+ *   <li>returns the result.</li>
+ * </ol>
+ */
+public class BeanMarshallerImplGenerator {
 
   public static byte[] dump(int constStringAppendCount, boolean useInvokeDynamic) throws Exception {
     ClassWriter cw = new ClassWriter(0);
 
     cw.visit(52, ACC_PUBLIC,
-      "benchmark/BeanJsonifierImpl",
+      "benchmark/BeanMarshallerImpl",
       null,
-      "java/lang/Object", new String[] { "benchmark/BeanJsonifier" });
+      "java/lang/Object", new String[] { "benchmark/BeanMarshaller" });
 
     visitConstructor(cw);
     visitMarshal(cw, constStringAppendCount, useInvokeDynamic);

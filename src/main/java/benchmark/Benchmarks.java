@@ -18,9 +18,9 @@ import org.openjdk.jmh.annotations.Warmup;
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
 // Hotspot seems to do all its optimizations pretty quickly, so let's save some time.
-//@Fork(value = 1, warmups = 0)
-//@Measurement(iterations=5)
-//@Warmup(iterations = 5)
+@Fork(value = 1, warmups = 0)
+@Measurement(iterations=5)
+@Warmup(iterations = 5)
 public class Benchmarks {
   @Param({"false", "true"})
   public boolean useInvokeDynamic;
@@ -31,14 +31,14 @@ public class Benchmarks {
   @Param({"NEVER_NULL", "SOMETIMES_NULL"})
   public BeanProvider provider;
 
-  private BeanJsonifier beanMarshaller;
+  private BeanMarshaller beanMarshaller;
 
   @Setup
-  public void makeJsonifier()  {
+  public void makeMarshaller()  {
     try {
-      beanMarshaller = (BeanJsonifier) new ByteClassLoader(Bean.class.getClassLoader()).loadClass(
-      "benchmark.BeanJsonifierImpl",
-      BeanJsonifierImplGenerator.dump(constStringAppendCount, useInvokeDynamic)).newInstance();
+      beanMarshaller = (BeanMarshaller) new ByteClassLoader(Bean.class.getClassLoader()).loadClass(
+      "benchmark.BeanMarshallerImpl",
+      BeanMarshallerImplGenerator.dump(constStringAppendCount, useInvokeDynamic)).newInstance();
     } catch (Exception e) {
       throw new RuntimeException(e);
     }

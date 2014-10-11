@@ -1,12 +1,19 @@
 package benchmark;
 
 public enum BeanProvider {
+  /**
+   * Always return a bean where the field s is non-null.
+   */
   NEVER_NULL {
     @Override
     public Bean getBean() {
       return BEAN_WITH_NON_NULL;
     }
-  }, SOMETIMES_NULL {
+  },
+  /**
+   * Every 100 times, return a Bean where the field s is null; all other times, return one where s is non-null.
+   */
+  SOMETIMES_NULL {
     int count = 0;
     @Override
     public Bean getBean() {

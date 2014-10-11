@@ -1,5 +1,5 @@
 package benchmark;
 
-public interface BeanJsonifier {
+public interface BeanMarshaller {
   String marshal(Bean bean);
 }
